@@ -1,0 +1,1594 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Diwanji Service",
+      "description": "Diwanji Services Hotel ,User,Admin Api Created."
+    },
+    "host": "http://192.168.43.220:5000",
+    "content-Type":"text/plain",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "User",
+        "description":"userDetails"
+      },
+      {
+        "name": "Product",
+        "description":"Product Details"
+      },
+      {
+        "name": "HotelOwnerDetails",
+        "description": "hotelOwnerDetails"
+      },
+      {
+        "name": "Hotel",
+        "description": "hotelDetails"
+      },
+      {
+        "name":"Menucard",
+        "description": "MenuCard Detaitls"
+      },
+      {
+        "name":"Review",
+        "description": "Review Detaitls"
+      }
+    ],
+   
+    "schemes": [
+      "http"
+    
+    ],
+    "securityDefinitions": {
+      "api_key": {
+        "type": "text/plain",
+        "name": "api_key",
+        "in": "header"
+      },
+      "petstore_auth": {
+        "type": "oauth2",
+        "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+        "flow": "implicit",
+        "scopes": {
+          "read_pets": "read your pets",
+          "write_pets": "modify pets in your account"
+        }
+      }
+    },
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/api/v1/addProduct": {
+        "post": {
+          "tags": [
+            "Product"
+          ],
+          "description": "Create Product Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+                "in":"body",
+                "required":true,
+                "name":"Product",
+                "schema": {
+                    "$ref": "#/definitions/Product"
+                  }
+            }    
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "description": "Created"
+          
+          },
+         
+          "500": {
+            "description": "Internal Server Error"
+          }
+
+        }
+
+   
+        }
+      },
+
+
+      "/api/v1/getAllProducts": {
+        "get": {
+          "tags": [
+            "Product"
+          ],
+          "description": "get Product Information",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "Product Found",
+                "in":"body",
+                "schema": {
+                    "$ref": "#/definitions/Product"
+                  }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/v1/deleteProduct/{id}": {
+        "delete": {
+          "tags": [
+            "Product"
+          ],
+          "description": "Delete a Product Details",
+          "parameters": [
+          {
+            "id":"",
+            "in":"body",
+            "name":"Product",
+            "type":"object",
+            "example":{
+              "ProductId":""
+            }
+
+          }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref": "#/definitions/Product"
+              },
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/getSingleProduct/{id}":{
+        "get": {
+          "tags": [
+            "Product"
+          ],
+          "description": "Endpoint to get the specific Product.",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+         
+          "responses": {
+            "200": {
+              "description": " Single Product information.",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+             
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+       
+      },
+      "/api/v1/user/createuser": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "description": "Create user Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+                "in":"body",
+                "required":true,
+                "name":"User",
+                "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+            }    
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/User"
+            },
+            "description": "Created"
+          
+          },
+         
+          "500": {
+            "description": "Internal Server Error"
+          }
+
+        }
+
+   
+        }
+      },
+
+
+
+        "/api/v1/MobileNumberSend": {
+            "post": {
+              "tags": [
+                "User"
+              ],
+              "description":"Mobile Number Send " ,
+              "consumes": [
+                "text/plain"
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                {
+                    "in":"body",
+                    "name":"User",
+                    "required":true,
+                    "schema": {
+                      "name":"Mobile",
+                     "type":"Number",
+                      "example":{
+                        "Mobile":"Number"
+                      }
+                       
+                      }
+                      
+    
+                }    
+            ]
+          },
+              "responses": {
+                "201": {
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  },
+                  "description": "Created"
+                
+                },
+               
+                "500": {
+                  "description": "Internal Server Error"
+                }
+
+              }
+           
+          },
+          "/api/v1/UserLogin": {
+            "post": {
+              "tags": [
+                "User"
+              ],
+              "description": " user Login",
+              "consumes": [
+                "text/plain"
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                {
+                    "in":"body",
+                    "name":"User",
+                    "schema": {
+                        "name":"user",
+                       "type":"Number",
+                        "example":{
+                          "Mobile":"Number",
+                          "otp":"Number "
+                        }
+                       
+                      }
+                }    
+            ],
+    
+              "responses": {
+                "201": {
+                  "description": "Created"
+                
+                },
+               
+                "500": {
+                  "description": "Internal Server Error"
+                }
+              }
+            }
+          },
+
+
+
+
+      "/api/v1/user/getUser": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "description": "get user Information",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "User Found",
+                "in":"body",
+                "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+
+
+
+      "/api/v1/user/SingleUser/{id}":{
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "description": "Endpoint to get the specific user.",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+         
+          "responses": {
+            "200": {
+              "description": " Single User information.",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+             
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+       
+      },
+
+
+
+
+
+
+      "/api/v1/user/deleteUser/{id}": {
+        "delete": {
+          "tags": [
+            "User"
+          ],
+          "description": "",
+          "parameters": [
+          {
+            "id":"",
+            "in":"body",
+            "name":"User",
+            "type":"object",
+            "example":{
+              "userId":""
+            }
+
+          }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              },
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/user/updateUser/{id}":{
+        "put": {
+          "tags": [
+            "User"
+          ],
+          "description": "Edit User",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+          {
+            "in":"body",
+            "name":"User",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+           
+          ],
+          "responses": {
+            "200": {
+            
+              "description": "User found update the user details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+      "/api/v1/hotellogin": {
+        "post": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Create Hotel Registration Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name":"body",
+              "in":"body",
+              "required":true,
+              "schema": {
+                "type":"object",
+                "properties":{
+                  "HotelOwnerEmail":{
+                    "type":"String",
+                    "example":""
+                },
+                "HotelOwnerPassword":{
+                  "type":"String",
+                  "example":""
+                  
+              }
+                }
+              }
+             
+            } 
+           
+          ],
+          "responses": {
+            "200": {
+             
+              "description": "Hotel Owner Login Successfully ."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/createHotelRegistration": {
+        "post": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Create Hotel Registration Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+           {
+             "in":"body",
+             "name":"Hotel",
+            "schema": {
+              "$ref":"#/definitions/HotelOwnerDetails"
+            }
+           }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref":"#/definitions/HotelDetails"
+              },
+              "description": "User found."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+
+
+      "/api/v1/createEnquiry": {
+        "post": {
+          "tags": [
+            "Enquiry"
+          ],
+          "description": "Create Enquiry Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+       { 
+        "in":"body",
+        "name":"Enquiry",
+        "schema": {
+          "$ref":"#/definitions/Enquiry"
+        }
+      
+       }
+          ],
+          "responses": {
+            "200": {
+              "description": "View Enquiry."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+      "/api/v1/SearchHotelByName/HotelName":{
+        "get": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Search hotel by Hotel Name.",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+         
+          "responses": {
+            "200": {
+              "description": " Hotel information.",
+              "schema": {
+                "$ref": "#/definitions/HotelOwnerDetails"
+              }
+             
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+       
+      },
+
+      "/api/v1/getHotelRegistration": {
+        "get": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Get Hotel Registration Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Get Hotel details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+      "/api/v1/getEnquiry": {
+        "get": {
+          "tags": [
+            "Enquiry"
+          ],
+          "description": "Get Enquiry Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref":"#/definitions/Enquiry"
+              },
+              "description": "Get Enquiry details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+      "/api/v1/emailSend":{
+        "post": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Email is  send",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+          {
+            "schema":{
+              "type":"object",
+              "name":"Hotel",
+              "HotelOwnerEmail":{
+                "type":"String",
+                "example":""
+            }
+            }
+          }
+          ],
+          "responses": {
+            "200": {
+          
+              "description": "User found."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+      "/api/v1/changePassword":{
+        "post": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Change Password Successfully",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name":"body",
+              "in":"body",
+              "required":true,
+              "schema": {
+                "type":"object",
+                "properties":{
+                  "HotelOwnerEmail":{
+                    "type":"String",
+                    "example":""
+                },
+                "HotelOwnerPassword":{
+                  "type":"String",
+                  "example":""
+                  
+              }
+                }
+              }
+             
+            }
+          ],
+          "responses": {
+            "200": {
+           
+              "description": "User found."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/DeleteHotelRegistration/{id}":{
+        "delete": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Delete Hotel Registration Details",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name":"Hotel",
+              "in":"body",
+              "id":{
+                "example":""
+              }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref": "#/definitions/HotelOwnerDetails"
+              },
+              "description": "Delete Hotel Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+      "/api/v1/deleteEnquiry/{Enquiryid}":{
+        "delete": {
+          "tags": [
+            "Enquiry"
+          ],
+          "description": "Delete  Enquiry Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name":"Enquiry",
+              "in":"body",
+              "id":{
+                "example":{
+                  "Enquiryid":""
+                }
+              }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+              "description": "Delete Enquiry Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/UpdateHotelRegistration/{id}":{
+        "put": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "Update Hotel Registration Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+      
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref": "#/definitions/HotelOwnerDetails"
+              },
+              "description": "Update Hotel Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/getSingleHotelRegistration/{id}":{
+        "get": {
+          "tags": [
+            "HotelOwnerDetails"
+          ],
+          "description": "get Single Hotel Registration Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+            "id":"",
+            "name":"Hotel",
+            "type":"String",
+            "example":{
+              "id":"String"
+            }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref": "#/definitions/HotelOwnerDetails"
+              },
+              "description": "Delete Hotel Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/CreateAddMenuCard":{
+        "post": {
+          "tags": [
+            "Menucard"
+          ],
+          "description":"Create MenuCard Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+       { 
+          "in":"body",
+        "name":"Menucard",
+        "schema": {
+          "$ref":"#/definitions/MenuCard"
+        }
+       }
+          ],
+          "responses": {
+            "200": {
+              "description": "Create Menucard."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+ "/api/v1/createReviewDetails":{
+        "post": {
+          "tags": [
+            "Review"
+          ],
+          "description":"Create MenuCard Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+       { 
+          "in":"body",
+         "name":"Review",
+        "schema": {
+          "$ref":"#/definitions/Review"
+        }
+       }
+          ],
+          "responses": {
+            "200": {
+              "description": "Create Review."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+ "/api/v1/getReviewDetails": {
+        "get": {
+          "tags": [
+            "Review"
+          ],
+          "description": "get Review Information",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "Review Found",
+                "in":"body",
+                "schema": {
+                    "$ref": "#/definitions/Review"
+                  }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/v1/getMenuCard":{
+        "get": {
+          "tags": [
+            "Menucard"
+          ],
+          "description":"Create MenuCard Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+       
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref":"#/definitions/MenuCard"
+              },
+              "description": "View Menucard."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      }    ,
+      
+      "/api/v1/updateMenuCard/{id}":{
+        "put": {
+          "tags": [
+            "Menucard"
+          ],
+          "description": "Update Menu Card Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+        "parameters":[
+          {
+            "schema": {
+              "$ref": "#/definitions/MenuCard"
+            }
+          }
+        ],
+          "responses": {
+            "200": {
+            
+              "description": "Update MenuCard Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+
+
+      "/api/v1/addHotelInformation": {
+        "post": {
+          "tags": [
+            "Hotel"
+          ],
+          "description": "Create Hotel Details",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+           {
+             "in":"body",
+             "name":"Hotel Details",
+            "schema": {
+              "$ref":"#/definitions/HotelDetails"
+            }
+           }
+          ],
+          "responses": {
+            "200": {
+              "schema": {
+                "$ref":"#/definitions/HotelDetails"
+              },
+              "description": "Hotel Information found."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+      "/api/v1/getHotelInformation": {
+        "get": {
+          "tags": [
+            "Hotel"
+          ],
+          "description": "get Hotel Information",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "Hotel Details Found",
+                "in":"body",
+                "schema": {
+                    "$ref": "#/definitions/HotelDetails"
+                  }
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+
+      
+      "/api/v1/deleteHotelInformation/{id}":{
+        "delete": {
+          "tags": [
+            "Hotel"
+          ],
+          "description": " Delete a Hotel Details ",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+            "id":"",
+            "name":"Hotel",
+            "type":"String",
+            "example":{
+              "HotelId":"String"
+            }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+            
+              "description": "Delete Hotel Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      },
+      "/api/v1/updateHotelInformation/{id}":{
+        "put": {
+          "tags": [
+            "Hotel"
+          ],
+          "description": " Update a Hotel Details ",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+            "id":"",
+            "name":"Hotel",
+            "type":"String",
+            "example":{
+              "HotelId":"String"
+            }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+            "schema":{
+              "$ref":"#/definitions/HotelDetails"
+            },
+              "description": "Update Hotel Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      }, 
+      "/api/v1/getSingleHotelInformation/{id}":{
+        "get": {
+          "tags": [
+            "Hotel"
+          ],
+          "description": " get  a Single Hotel Details ",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+            "id":"",
+            "name":"Hotel",
+            "type":"String",
+            "example":{
+              "HotelId":"String"
+            }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+            "schema":{
+              "$ref":"#/definitions/HotelDetails"
+            },
+              "description": "Update Hotel Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      }, 
+      
+      "/api/v1/deleteReviewDetails/{id}":{
+        "delete": {
+          "tags": [
+            "Review"
+          ],
+          "description": " Delete a Review Details ",
+          "consumes": [
+            "text/plain"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+            "id":"",
+            "name":"Review",
+            "type":"String",
+            "example":{
+              "Reviewid":"String"
+            }
+            }
+           
+          ],
+          "responses": {
+            "200": {
+            
+              "description": "Delete Review Details."
+            },
+            "500": {
+              "description": "Server Failure."
+            }
+          }
+        }
+      }
+
+    },
+
+
+    "definitions": {
+      "Product":{
+        "type":"object",
+       "properties":{
+       "CategoryId":{
+    "type":"mongoose.Schema.Types.ObjectId",
+    "required":true,
+    "example":""
+},
+"UserId":{
+    "type":"mongoose.Schema.Types.ObjectId",
+    "required":true,
+    "example":""
+
+},
+"ProductName":{
+    "type":"String",
+    "example":""
+
+   
+},
+"WeightQty":{
+    "type":"Number",
+    "min": "1, Quantity can not be less then 1.",
+    "example":""
+
+
+   
+},
+"Price":{
+    "type":"Number",
+    "min":  " 1, Price can not be less then 1." ,
+    "example":""
+
+},
+"Address":{
+    "type":"String",
+    "example":""
+
+   
+},
+"Message":{
+    "type":"String",
+    "example":""
+
+   
+},
+
+"Pincode":{
+    "type":"String",
+    "example":""
+
+    
+},
+"file":{
+    "type":"String",
+    "example":""
+
+}
+}
+      },
+      "User": {
+        "type": "object",
+        
+        "properties": {
+            "userId":{
+                "type":"integer",
+                "example":"integer"
+                
+            },
+          "Firstname":{
+            "type":"String",
+            "example":"String"
+           
+            
+        },
+        "Lastname":{
+            "type":"String",
+            "example":"String"
+           
+        },
+        "Email":{
+            "type":"String",
+            "example":"String"
+            
+        },
+            "City":{
+                "type":"String",
+                "example":"String"
+            },
+            "Pincode":{
+                "type":"Number",
+                "example":"Number"
+            },
+            "State":{
+                "type":"String",
+                "example":"String"
+            },
+            "Country":{
+                "type":"String",
+                "example":"String"
+            },
+       
+            "Mobile":{
+            "type":"Number",
+            "example":"Number"
+            
+        },
+        "otp":{
+            "type":"String",
+            "example":"String"
+            
+        },
+       "Date":{
+           "type":"Date",
+           "example":"dd/mm/yyyy"
+
+       },
+       
+        "file":{
+            "type":"String",
+            "example":"String"
+        },
+        "expireIn":{
+            "type":"Number",
+            "example":"Number"
+        }
+           
+        },
+        "xml": {
+          "name": "User"
+        }
+      },
+      "HotelOwnerDetails": {
+        "type": "object",
+        "properties": {
+
+            "HotelOwnerName":{
+                "type":"String",
+                "example":""
+                
+            },
+            "HotelName":{
+                "type":"String",
+                "example":""
+                
+            },
+            "HotelOwnerEmail":{
+                "type":"String",
+                "example":""
+                
+            },
+        
+            "HotelOwnerPassword":{
+                "type":"String",
+                "example":""
+                
+            },
+        
+            "HotelOwnerCity":{
+                    "type":"String",
+                    "example":""
+                },
+                "HotelOwnerPincode":{
+                    "type":"Number",
+                    "example":""
+                },
+                "HotelOwnerState":{
+                    "type":"String",
+                    "example":""
+                },
+                "HotelOwnerCountry":{
+                    "type":"String",
+                    "example":""
+                },
+           
+                "HotelOwnerContact":{
+                "type":"Number",
+                "example":""
+                
+            },
+            "otp":{
+        "type":"String",
+        "example":""
+            },
+           "Date":{
+               "type":"Date",
+               "example":""
+           },
+           
+           "file":{
+                "type":"String",
+                "example":""
+            }
+        },
+        "xml": {
+          "name": "Hotel"
+        }
+      },
+      "Enquiry":{
+        "type":"object",
+        "properties":{
+          "Enquiryid":{
+            "type":"String",
+            "example":""
+          },
+          "Name":{
+            "type":"String",
+            "example":""
+          },
+          "Email":{
+            "type":"String",
+            "example":""
+          },
+          "Mobile":{
+            "type":"Number",
+            "example":""
+          },
+          "Message":{
+            "type":"String",
+            "example":""
+          }
+        },
+        "xml": {
+          "name": "Enquiry"
+        }
+      },
+      "MenuCard":{
+        "type":"object",
+        "properties":{
+          "ProductName":{
+            "type":"String",
+            "example":""
+
+        },
+        "AverageRate":{
+            "type":"String",
+            "example":""
+
+        },
+        "file":{
+            "type":"String",
+            "example":""
+
+        },
+        "Price":{
+            "type":"Number",
+            "example":""
+
+        }
+        },
+        "xml": {
+          "name":"MenuCard"
+        }
+      },
+      "Review":{
+        "type":"object",
+        "properties":{
+          "UserId":{
+            "type":"mongoose.Schema.Types.ObjectId",
+            "required":true,
+            "example":"String"
+        },
+        "ProductId":{
+          "type":"mongoose.Schema.Types.ObjectId",
+          "required":true,
+          "example":"String"
+
+         },
+         "userName":{
+          "type":"String",
+          "example":"String"
+
+          
+      },
+      "userContactNumber":{
+        "type":"Number",
+        "example":"Number"
+
+    },
+    "userEmail":{
+      "type":"String",
+      "example":"String"
+
+  },
+  "userreview":{
+      "type":"String",
+      "example":"String"
+
+}
+        }
+      },
+   
+    "xml": {
+      "name":"Review"
+    },
+    "HotelDetails":{
+      "type":"object",
+      "properties":{
+        "HotelName":{
+          "type":"String",
+           "example":"String"
+
+          
+      },
+      "HotelEmail":{
+          "type":"String",
+           "example":"String"
+
+          
+      },
+      "HotelAddress":{
+          "type":"String",
+       "example":"String"
+      },
+      "HotelLocation":{
+       "type":"String",
+       "example":"String"
+
+      },
+       "Cuisines":{
+          "type":"String",
+       "example":"String"
+
+              },
+  
+          "City":{
+              "type":"String",
+       "example":"String"
+
+          },
+          "Pincode":{
+              "type":"Number",
+       "example":"Number"
+
+          },
+          "State":{
+              "type":"String",
+       "example":"String"
+
+          },
+          "Country":{
+              "type":"String",
+       "example":"String"
+
+          },
+     
+          "HotelContact":{
+          "type":"Number",
+       "example":"91********"
+
+          
+      },
+  
+     "Date":{
+         "type":"Date",
+         "example":"dd/mm/yyyy"
+     },
+     
+      "file":{
+          "type":"String",
+          "example":"ImageName.jpg "
+      }
+      }
+    }
+  }
+}
